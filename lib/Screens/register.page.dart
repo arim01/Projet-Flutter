@@ -104,10 +104,10 @@ class _LoginPageState extends State<RegisterPage> {
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            "Home Page",
-            style: TextStyle(color: Colors.blue, fontSize: 40),
+            "Register Page",
+            style: TextStyle(color: Colors.blue, fontSize: 24),
           ),
-          backgroundColor: Colors.blueGrey,
+          backgroundColor: Colors.blue,
         ),
         body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
@@ -119,9 +119,9 @@ class _LoginPageState extends State<RegisterPage> {
                 children: [
                   Image.asset("images/img1.png", height: 100, width: 100),
                   SizedBox(height: 20),
-                  Text("Hello Back to the home Page",
+                  Text("Create Your Account",
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 50, color: Colors.blueAccent)),
+                      style: TextStyle(fontSize: 24, color: Colors.blueAccent)),
                   SizedBox(height: 20),
                   TextFormField(
                     controller: emailcontroller,
@@ -131,7 +131,7 @@ class _LoginPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.circular(20)),
                         prefixIcon: Icon(
                           Icons.email,
-                          color: Colors.pink,
+                          color: Colors.blueAccent,
                         )),
                     keyboardType: TextInputType.emailAddress,
                     //validator: emailValidator,
@@ -147,7 +147,7 @@ class _LoginPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.circular(20)),
                         prefixIcon: Icon(
                           Icons.lock,
-                          color: Colors.pink,
+                          color: Colors.blueAccent,
                         ),
                         suffixIcon: IconButton(
                             onPressed: () {
@@ -175,7 +175,7 @@ class _LoginPageState extends State<RegisterPage> {
                             borderRadius: BorderRadius.circular(20)),
                         prefixIcon: Icon(
                           Icons.lock,
-                          color: Colors.pink,
+                          color: Colors.blueAccent,
                         ),
                         suffixIcon: IconButton(
                             onPressed: () {
@@ -196,9 +196,8 @@ class _LoginPageState extends State<RegisterPage> {
                   ElevatedButton(
                       onPressed: SignUp, // Appel de la méthode SignUp
                       child: Text(
-                        "Login",
-                        style:
-                            TextStyle(fontSize: 30, color: Colors.deepPurple),
+                        "Register",
+                        style: TextStyle(fontSize: 18, color: Colors.green),
                       )),
                   SizedBox(height: 20),
                   TextButton(
@@ -206,7 +205,7 @@ class _LoginPageState extends State<RegisterPage> {
                         Navigator.pushNamed(context, "/login");
                       },
                       child: Text("Already have an account ?",
-                          style: TextStyle(fontSize: 30, color: Colors.pink)))
+                          style: TextStyle(fontSize: 16, color: Colors.green)))
                 ],
               ),
             )));

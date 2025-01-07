@@ -43,11 +43,11 @@ class _LoginPageState extends State<LoginPage> {
           centerTitle: true,
           title: Text(
             "Home Page",
-            style: TextStyle(color: Colors.white, fontSize: 40),
+            style: TextStyle(color: Colors.white, fontSize: 24),
           ),
           backgroundColor: Colors.blue,
         ),
-        backgroundColor: Colors.white, // Définir le fond noir ici
+        backgroundColor: Colors.white, // Définir le fond blanc ici
         body: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Form(
@@ -58,35 +58,39 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   Image.asset("images/img1.png", height: 100, width: 100),
                   SizedBox(height: 20),
-                  Text("Hello Back to the home Page",
+
+                  const Text("Welcome Back",
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 50, color: Colors.blueAccent)),
+                      style: TextStyle(fontSize: 24, color: Colors.blueAccent)),
                   SizedBox(height: 20),
+
+                  //email
                   TextFormField(
                     controller: emailcontroller,
                     decoration: InputDecoration(
-                        labelText: "email",
+                        labelText: "Email",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
                         prefixIcon: Icon(
                           Icons.email,
-                          color: Colors.pink,
+                          color: Colors.blueAccent,
                         )),
                     keyboardType: TextInputType.emailAddress,
                     //validator: emailValidator,
                   ),
                   SizedBox(height: 20),
+
                   TextFormField(
                     controller: passcontroller,
                     obscureText:
                         !_passVariable, //on veut que ca soit true par defaut
                     decoration: InputDecoration(
-                        labelText: "password",
+                        labelText: "Password",
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20)),
                         prefixIcon: Icon(
                           Icons.lock,
-                          color: Colors.pink,
+                          color: Colors.blueAccent,
                         ),
                         suffixIcon: IconButton(
                             onPressed: () {
@@ -101,47 +105,50 @@ class _LoginPageState extends State<LoginPage> {
                     keyboardType: TextInputType.emailAddress,
                     //validator: passValidator,
                   ),
+
                   SizedBox(
                     height: 20,
                   ),
-                  ElevatedButton(
-                      onPressed: () async {
-                        if (keyForm.currentState!.validate()) {
-                          try {
-                            // Authentification Firebase
-                            final credential = await FirebaseAuth.instance
-                                .signInWithEmailAndPassword(
-                              email: emailcontroller.text,
-                              password: passcontroller.text,
-                            );
 
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text('Login successful!')),
-                            );
-                            Navigator.pushNamed(context, "/home");
-                          } catch (e) {
-                            // En cas d'erreur
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                  content:
-                                      Text('Login failed: ${e.toString()}')),
-                            );
-                          }
+                  ElevatedButton(
+                    onPressed: () async {
+                      if (keyForm.currentState!.validate()) {
+                        try {
+                          // Authentification Firebase
+                          final credential = await FirebaseAuth.instance
+                              .signInWithEmailAndPassword(
+                            email: emailcontroller.text,
+                            password: passcontroller.text,
+                          );
+
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Login successful!')),
+                          );
+                          Navigator.pushNamed(context, "/home");
+                        } catch (e) {
+                          // En cas d'erreur
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content: Text('Login failed: ${e.toString()}')),
+                          );
                         }
-                      },
-                      child: Text(
-                        "Login",
-                        style:
-                            TextStyle(fontSize: 30, color: Colors.deepPurple),
-                      )),
-                  SizedBox(height: 20),
+                      }
+                    },
+                    child: const Text(
+                      "Login",
+                      style: TextStyle(fontSize: 18, color: Colors.black),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 15),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                   TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, "/register");
                       },
                       child: Text("Don't have an account ?",
-                          style: TextStyle(fontSize: 30, color: Colors.pink)))
+                          style: TextStyle(fontSize: 16, color: Colors.black)))
                 ],
               ),
             )));
